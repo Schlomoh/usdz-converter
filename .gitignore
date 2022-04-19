@@ -3,4 +3,5 @@ lib
 pyenv.cfg
 .python-version
 include
-__pycache__
+**/__pycache__
+**/.DS_Store
