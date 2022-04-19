@@ -1,6 +1,8 @@
 # glTF to USDZ converter
 Python gltf to usdz converter using docker image <a href='https://hub.docker.com/r/plattar/python-xrutils'>plattar/xrutils</a>.
 
+This can convert `.gltf` and `.glb` files into apples `.usdz` file type using googles available <a href='https://github.com/google/usd_from_gltf'>usd_from_gltf</>. 
+
 ## Installation
 
 A requirements.txt is included and can be used to install the necessary requirements.
@@ -9,7 +11,7 @@ A requirements.txt is included and can be used to install the necessary requirem
  pip install -r requirements.txt 
 ```
  
- or (if python3 and pip3 is not the default)
+ or (if python3 and pip3 are not the default)
  
  ```shell
  pip3 install -r requirements.txt
