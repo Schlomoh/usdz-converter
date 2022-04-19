@@ -1,0 +1,13 @@
+#Caches and system files
+**/__pycache__/
+**/.DS_Store
+**.pyc
+
+#legacy file input and output
+**/_in/
+**/_out/
+
+lib
+bin
+include
+.vscode
