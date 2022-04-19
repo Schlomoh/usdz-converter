@@ -1,13 +1,6 @@
-#Caches and system files
-**/__pycache__/
-**/.DS_Store
-**.pyc
-
-#legacy file input and output
-**/_in/
-**/_out/
-
-lib
 bin
+lib
+pyenv.cfg
+.python-version
 include
-.vscode
+__pycache__

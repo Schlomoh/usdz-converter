@@ -1,5 +1,0 @@
-einfach mit 'python3 start_usdz.py' starten und von '_in' in '_out' konvertieren
-
-Am besten jeweils Unterordner mit jeweiligen gltf Dateien anlegen. Tiefer angelegte Ordner werden aber auch ausgelesen.
-
-Die Konversion Argumente sollten sich aber auch leicht in der 'Start_usdz.py' Datei anpassen lassen.
