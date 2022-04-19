@@ -34,5 +34,3 @@ def is_gltf(file):
     for ext in ['.gltf', '.glb']:
         if ext == extension:
             return True
-        else:
-            return False
