@@ -1,7 +1,7 @@
 # glTF to USDZ converter
 Python gltf to usdz converter using docker image <a href='https://hub.docker.com/r/plattar/python-xrutils'>plattar/xrutils</a>.
 
-This can convert `.gltf` and `.glb` files into apples `.usdz` file type using googles available <a href='https://github.com/google/usd_from_gltf'>usd_from_gltf</>. 
+This can convert `.gltf` and `.glb` files into apples `.usdz` file type using googles available <a href='https://github.com/google/usd_from_gltf'>usd_from_gltf</a>. 
 
 ## Installation
 
