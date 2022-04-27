@@ -1,5 +1,4 @@
 import argparse
-from termios import INPCK
 
 from utils.path_operations import check_io
 from utils.docker_util import Docker_util

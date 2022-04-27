@@ -1,5 +1,4 @@
 import os
-from re import S
 import docker
 from glob import glob
 
@@ -16,14 +15,13 @@ def list_files(path: str, recursive: bool) -> 'list[str]':
     Returns:
         list[str]: All gltf input files to be converted
     """
-    files = []
+    
     if os.path.isfile(path):
-        files = [path]
+        return [path]
     else:
         if recursive:
             path = os.path.join(path, '**')
-        files = glob(path, recursive=recursive)
-    return files
+        return glob(path, recursive=recursive)
 
 
 class Docker_util:
@@ -43,11 +41,12 @@ class Docker_util:
     image_release = 'release-1.108.3'
     image_full_name = f'{image_name}:{image_release}'
 
-    def __init__(self, input, output, recursive=False):
+    instance = docker.from_env()
+
+    def __init__(self, input, output, recursive):
         self.input = input
         self.output = output
         self.recursive = recursive
-        self.instance = docker.from_env()
 
     def get_image(self):
         """Gets the docker image or pulls it from the hub if not present.
@@ -55,6 +54,7 @@ class Docker_util:
         Returns:
             Model | any: Docker image
         """
+        
         image_list = self.instance.images.list(self.image_full_name)
         if len(image_list) == 0:
             self.instance.images.pull(self.image_name, tag=self.image_release)
@@ -86,24 +86,12 @@ class Docker_util:
         Args:
             file (string): Input gltf file to be converted
         """
+        
+        inp = new_file_path(self.docker_base_in, file)
+        out = new_file_path(self.docker_base_out,
+                            change_extension(file, '.usdz'))
 
-        def create_args(f: str):
-            """Creates a dictionary containing the input and output path to be placed
-            as arguments in the "usd_from_gltf" docker command
-
-            Args:
-                f (string): Gltf input file
-
-            Returns:
-                dict("inp", "out"): Input and output path
-            """
-            inp = new_file_path(self.docker_base_in, f)
-            out = new_file_path(self.docker_base_out,
-                                change_extension(f, '.usdz'))
-            return {'inp': inp, 'out': out}
-
-        args = create_args(file)
-        cmd = f'usd_from_gltf {args["inp"]} {args["out"]}'
+        cmd = f'usd_from_gltf {inp} {out}'
         self.container.exec_run(cmd)
 
     def stop(self):
